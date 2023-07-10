@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mern-test-2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todo
+  template:
+    metadata:
+      labels:
+        app: todo
+    spec:
+      imagePullSecrets:
+        - name: docker-secret
+      containers:
+        - name: mern-test-2
+          image: diagonalge/mern-test-2:latest
+          ports:
+            - containerPort: 3000
